@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Pai>
+
+@{
+    ViewBag.Title = "PAIS - Lista de Pais";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacto)
+        </th>
+        <th>
+            @Html.Label("Naturalidade")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nacionalidade)
+        </td>
+        <td>
+            @Html.ActionLink("Entrar como este pai/mãe", "Entrar", new { id = item.PaiId })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a PAIS", "Index")

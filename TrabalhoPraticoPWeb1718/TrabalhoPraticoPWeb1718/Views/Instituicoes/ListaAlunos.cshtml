@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Crianca>
+
+@{
+    ViewBag.Title = "Lista de Alunos da Instituição " + ((string)ViewBag.Instituicao);
+}
+
+<h2>@ViewBag.Title</h2>
+<img src="~/Content/Imagens/estudantes.jpg" width="650" height="400" class="img-responsive"/>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Género")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.Label("Data do contrato")
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{
+                if (item.Genero == TrabalhoPraticoPWeb1718.Models.ModelosBD.Genero.Masculino)
+                {
+                    <img src="~/Content/Imagens/rapaz.png" width="50" height="50" />
+                }
+                else
+                {
+                    <img src="~/Content/Imagens/rapariga.png" width="50" height="50" />
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataContrato)
+        </td>
+
+        <td></td>
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a INSTITUIÇÕES", "Index")

@@ -1,0 +1,23 @@
+﻿@model TrabalhoPraticoPWeb1718.Models.ViewModels.InstituicoesCidadesVM
+
+@{
+    ViewBag.Title = "PAIS - Lista de Instituições";
+    AjaxOptions opcoes = new AjaxOptions { UpdateTargetId = "actualizar", HttpMethod = "Get", InsertionMode = InsertionMode.Replace };
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+@using (Ajax.BeginForm("ListaInstituicoes", opcoes))
+{
+    <div>
+        @Html.DropDownListFor(x => x.Opcao, ViewBag.LISTA as SelectList)
+        <input value="Procurar" type="submit" class="btn btn-info" />
+    </div>
+}
+<br />
+@Html.Partial("_Listar", Model.InstituicoesLista)
+@Html.ActionLink("Voltar a PAIS", "Index")
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "ADMINISTRADOR - Índice";
+}
+
+<h2>@ViewBag.Title</h2>
+<img src="~/Content/Imagens/4.jpg"  width="500" height="500" class="img-responsive" />
+
+<dl>
+    <dt>@Html.ActionLink("Autorizar Instituições", "Instituicoes")</dt>
+    <dd>- As instituições deverão ser activadas por si</dd>
+    <dt>@Html.ActionLink("Alterar tabela Pais", "Index", "PaisHidden")</dt>
+    <dd>- Modificar valores da tabela Pais</dd>
+    <dt>@Html.ActionLink("Alterar tabela Crianças", "Index", "CriancasHidden")</dt>
+    <dd>- Modificar valores da tabela Crianças</dd>
+    <dt>@Html.ActionLink("Alterar tabela Instituições", "Index", "InstituicoesHidden")</dt>
+    <dd>- Modificar valores da tabela Instituições</dd>
+    <dt>@Html.ActionLink("Alterar tabela Ensinos", "Index", "EnsinosHidden")</dt>
+    <dd>- Modificar valores da tabela Ensinos</dd>
+    <dt>@Html.ActionLink("Alterar tabela Disciplinas", "Index", "DisciplinasHidden")</dt>
+    <dd>- Modificar valores da tabela Disciplinas</dd>
+</dl>
+

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Crianca>
+
+@{
+    ViewBag.Title = "PAIS - Lista de Filhos";
+}
+
+<h2>PAIS - Lista de Filhos</h2>
+<img src="~/Content/Imagens/6.jpg"  width="500" height="500" class="img-responsive" />
+<br />
+<p>
+    @Html.ActionLink("Adicionar filho", "CreateFilho")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.Label("Género")
+        </th>
+        <th>
+            @Html.Label("Idade")
+        </th>
+        <th>
+            @Html.Label("Avaliação")
+        </th>
+        <th>
+            @Html.Label("Data do contrato")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instituicao)
+        </th>
+        <th>
+            @Html.Label("Ensino")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @{
+                if (item.Genero == TrabalhoPraticoPWeb1718.Models.ModelosBD.Genero.Feminino)
+                {
+                    <img src="~/Content/Imagens/rapariga.png" width="50" height="50" />
+                }
+                else
+                {
+                    <img src="~/Content/Imagens/rapaz.png" width="50" height="50" />
+                }
+            }
+        </td>
+        <td>
+            @{ var idade = DateTime.Now.Year - item.DataNascimento.Year;
+                @Html.Label(idade.ToString())    
+            }
+        </td>
+        @{
+            if (item.Avaliacao != -1)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avaliacao)
+                </td>
+            }
+            else
+            {
+                <td class="text-danger">Por avaliar</td>
+            }
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.DataContrato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instituicao.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ensino.Nome)
+        </td>
+        @{
+            if (item.Avaliacao == -1)
+            {
+                <td>
+                    @Html.ActionLink("Avaliar Instituição", "AvaliarInstituicao", new { id = item.CriancaId }, new { @class = "text-success" })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.Label("Já avaliada", new { @class = "text-warning" })
+                </td>
+            }
+        }
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a PAIS", "Index")

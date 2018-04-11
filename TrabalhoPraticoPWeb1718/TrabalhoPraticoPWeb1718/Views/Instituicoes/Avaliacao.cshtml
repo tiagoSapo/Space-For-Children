@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Crianca>
+
+@{
+    ViewBag.Title = "Avaliação da Instituição " + ViewBag.Instituicao;
+}
+
+<h2>@ViewBag.Title</h2>
+<img src="~/Content/Imagens/rating.jpg" width="400" height="130" class="img-responsive"/>
+<br />
+@{
+    double media = 0, elementos = 0;
+
+    foreach (var i in Model)
+    {
+        if (i.Avaliacao != null && i.Avaliacao != -1)
+        {
+            media += (double)i.Avaliacao.Value;
+            elementos++;
+        }
+    }
+    media /= elementos;
+    if (elementos != 0)
+    {
+        <h4>A média da instituição @ViewBag.Instituicao é de @media Valores</h4>
+    }
+    else
+    {
+        <h4>A sua instituição ainda não foi avaliada</h4>
+    }
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.Label("Avaliação")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @{
+                string s = item.Avaliacao.ToString() + " Valores";
+                if (item.Avaliacao == -1)
+                {
+                    @Html.Label("Por avaliar")
+                }
+                else if (item.Avaliacao < 10)
+                {
+                    @Html.Label(s, new { @class = "text-danger"} )
+                }
+                else if (item.Avaliacao >= 10 && item.Avaliacao < 15)
+                {
+                    @Html.Label(s, new { @class = "text-warning" })
+                }
+                else
+                {
+                    @Html.Label(s, new { @class = "text-success" })
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a INSTITUIÇÕES", "Index")

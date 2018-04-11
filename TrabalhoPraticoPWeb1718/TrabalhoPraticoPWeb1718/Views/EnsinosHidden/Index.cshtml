@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Ensino>
+
+@{
+    ViewBag.Title = "Ensino";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Criar novo ensino", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.EnsinoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.EnsinoId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.EnsinoId })
+        </td>
+    </tr>
+}
+
+</table>

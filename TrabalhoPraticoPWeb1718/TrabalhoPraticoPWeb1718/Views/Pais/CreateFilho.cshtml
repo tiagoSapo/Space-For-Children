@@ -1,0 +1,98 @@
+﻿@model TrabalhoPraticoPWeb1718.Models.ViewModels.CriancasPaisInsituicaoEnsinoVM
+
+@{
+    string s = ViewBag.Utilizador as string;
+    ViewBag.Title = "Inscrever filho de " + s;
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+}
+<script>
+    $(function () {
+        $("#InstID").ready(function () {
+            $.get("/Pais/ObtemEnsinos", { ID: $("#InstID").val() }, function (data) {
+                $("#Ens").empty();
+                $.each(data, function (index, row) {
+                    $("#Ens").append(" <option value='" + row.EnsinoId + "'>" + row.Nome + "</option>")
+                });
+            })
+        });
+    });
+    $(function () {
+        $("#InstID").change(function () {
+            $.get("/Pais/ObtemEnsinos", { ID: $("#InstID").val() }, function (data) {
+                $("#Ens").empty();
+                $.each(data, function (index, row) {
+                    $("#Ens").append(" <option value='" + row.EnsinoId + "'>" + row.Nome + "</option>")
+                });
+            })
+        });
+    });
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instituicao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Instituicao, Model.ListaInstituicoes, new { htmlAttributes = new { @class = "form-control" }, id = "InstID" })
+                @Html.ValidationMessageFor(model => model.Instituicao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OpcaoEnsino, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.OpcaoEnsino, ViewBag.Ensinos as SelectList, new { id = "Ens" })
+                @Html.ValidationMessageFor(model => model.OpcaoEnsino, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Genero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Instituicao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Inscrever filho" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar a Lista de Filhos", "ListaFilhos")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

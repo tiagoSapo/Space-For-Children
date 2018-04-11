@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.PaiAutorizacao>
+
+@{
+    ViewBag.Title = "INSTITUIÇÕES - Autorizar Pais";
+}
+
+<h2>@ViewBag.Title</h2>
+<img src="~/Content/Imagens/lock.png" width="140" height="200", class="img-responsive"/>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacto)
+        </th>
+        <th>
+            @Html.Label("Naturalidade")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nacionalidade)
+        </td>
+        <td>
+            @Html.ActionLink("Autoriza Pai/Mãe", "AutorizaPai", new { id=item.PaiAutorizacaoId }, new { @class="text-success"})
+        </td>
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a INSTITUIÇÕES", "Index")

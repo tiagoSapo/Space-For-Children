@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Disciplina>
+
+@{
+    ViewBag.Title = "Disciplinas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Criar nova disciplina", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Curso)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Curso)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.DisciplinaId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.DisciplinaId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.DisciplinaId })
+        </td>
+    </tr>
+}
+
+</table>

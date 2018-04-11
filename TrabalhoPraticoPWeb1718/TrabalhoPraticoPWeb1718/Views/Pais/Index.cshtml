@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "PAIS - Índice";
+}
+<h2>PAIS - Índice</h2>
+@{
+    if (ViewBag.UTILIZADOR != null)
+    {
+        <h3>Conta: @((string)ViewBag.Utilizador) | @Html.ActionLink("Terminar Sessão", "Sair", null, new { @class = "text-warning" })</h3>
+    }
+}
+<img src="~/Content/Imagens/2.jpg"  width="500" height="500" class="img-responsive" />
+
+<dl>
+    @{
+        if (ViewBag.UTILIZADOR != null)
+        {
+            <dt>@Html.ActionLink("Entrar com outra conta PAIS", "ListaPais")</dt>
+            <dd>- Mostra todas os pais inscritos</dd>
+        }
+        else
+        {
+            <dt>@Html.ActionLink("Entrar com uma conta PAIS", "ListaPais")</dt>
+            <dd>- Mostra todas os pais inscritos</dd>
+        }
+    }
+    @{  
+        if (ViewBag.UTILIZADOR == null)
+        {
+            <dt>@Html.ActionLink("Criar uma conta PAIS", "Create")</dt>
+            <dd>- Crie uma conta antes de tentar adicionar os seus filhos</dd>
+        }
+    }
+    <dt>@Html.ActionLink("Instituições disponíveis", "ListaInstituicoes")</dt>
+    <dd>- Mostra todas as Instituições disponíveis, os seus serviços, os valores da mensalidades e as suas avaliações</dd>
+    @{
+        if (ViewBag.UTILIZADOR != null)
+        {
+            <dt>@Html.ActionLink("Lista de filho(a)s", "ListaFilhos")</dt>
+            <dd>- Inscreva o seu filho numa instituição. Deverá aguarda pela resposta da instituição</dd>
+        }
+    }
+    @{ 
+        if (ViewBag.UTILIZADOR != null)
+        {
+            <dt>@Html.ActionLink("Fazer pedidos a uma instituição", "Pedidos")</dt>
+            <dd>- Fazer pedido a uma instituição</dd>
+        }
+    }
+</dl>

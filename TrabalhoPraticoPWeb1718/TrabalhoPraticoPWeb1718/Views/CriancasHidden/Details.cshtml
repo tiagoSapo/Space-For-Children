@@ -1,0 +1,58 @@
+﻿@model TrabalhoPraticoPWeb1718.Models.ModelosBD.Crianca
+
+@{
+    ViewBag.Title = "Criança detailhes";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Crianca</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Avaliacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Avaliacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataContrato)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CriancaId }) |
+    @Html.ActionLink("Voltar para CRIANÇAS", "Index")
+</p>

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "INSTITUIÇÕES - Índice";
+}
+
+<h2>@ViewBag.Title</h2>
+@{
+    if (ViewBag.UTILIZADOR != null)
+    {
+        <h3>Conta: @((string)ViewBag.Utilizador) | @Html.ActionLink("Terminar Sessão", "Sair", null, new { @class = "text-warning" })</h3>
+    }
+}
+<img src="~/Content/Imagens/3.jpg"  width="500" height="500" class="img-responsive" />
+
+<dl>
+    @{
+        if (ViewBag.UTILIZADOR != null)
+        {
+            <dt>@Html.ActionLink("Entrar com outra conta INSTITUIÇÃO", "List")</dt>
+            <dd>- Mostra todas os pais inscritos</dd>
+        }
+        else
+        {
+            <dt>@Html.ActionLink("Entrar com uma conta INSTITUIÇÃO", "List")</dt>
+            <dd>- Mostra todas os pais inscritos</dd>
+        }
+    }
+    @{
+        if (ViewBag.UTILIZADOR == null)
+        {
+            <dt>@Html.ActionLink("Criar uma conta INSTITUIÇÃO", "Create")</dt>
+            <dd>- Crie uma conta antes de tentar registar os serviços por si disponibilizados</dd>
+        }
+    } 
+    @{
+        if (ViewBag.UTILIZADOR != null)
+        {
+            <dt>@Html.ActionLink("As avaliações da minha instituição", "Avaliacao")</dt>
+            <dd>- Lista todos os alunos que me avaliaram</dd>
+            <dt>@Html.ActionLink("Adicionar mais serviços", "ListaServicos")</dt>
+                <dd>- Lista de todos as instituições inscritas no Spaces for children</dd>
+                <dt>@Html.ActionLink("Alunos inscritos", "ListaAlunos")</dt>
+                <dd>- Lista de todos as instituições inscritas no Spaces for children</dd>
+                <dt>@Html.ActionLink("Autorizar pais", "Pais")</dt>
+                <dd>- Lista de todos as instituições inscritas no Spaces for children</dd>
+                <dt>@Html.ActionLink("Responder a Pedidos", "Pedidos")</dt>
+                <dd>- Lista de todos as instituições inscritas no Spaces for children</dd>
+        }
+    } 
+</dl>
+

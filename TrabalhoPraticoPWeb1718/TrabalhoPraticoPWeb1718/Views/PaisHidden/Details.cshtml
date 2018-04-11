@@ -1,0 +1,50 @@
+﻿@model TrabalhoPraticoPWeb1718.Models.ModelosBD.Pai
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pai</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PaiId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

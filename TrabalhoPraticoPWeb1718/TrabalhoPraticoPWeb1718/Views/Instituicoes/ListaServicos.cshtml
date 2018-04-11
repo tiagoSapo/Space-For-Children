@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Ensino>
+
+@{
+    ViewBag.Title = "Lista de Servicos da Instituição " + ViewBag.Instituicao;
+}
+
+<h2>@ViewBag.Title</h2>
+<img src="~/Content/Imagens/servicos.png" width="500" height="200" class="img-responsive"/>
+<br />
+<p>
+    @Html.ActionLink("Adicionar mais serviços", "AddServicos")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+        </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a INSTITUIÇÕES", "Index")

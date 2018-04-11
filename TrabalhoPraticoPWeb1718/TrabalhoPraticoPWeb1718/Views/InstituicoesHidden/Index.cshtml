@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Instituicao>
+
+@{
+    ViewBag.Title = "Instituições";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Criar nova instituição", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroProfessores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contacto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoInstituicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mensalidade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroProfessores)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contacto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoInstituicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mensalidade)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.InstituicaoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.InstituicaoId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.InstituicaoId })
+        </td>
+    </tr>
+}
+
+</table>

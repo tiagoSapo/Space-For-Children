@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+@using TrabalhoPraticoPWeb1718.Models.Perfis
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        @{
+            if (User.IsInRole(Perfis.Pai))
+            {
+                <li>
+                    @Html.ActionLink("Olá " + User.Identity.GetUserName() + " - " + Perfis.Pai + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+            }
+            else if (User.IsInRole(Perfis.Instituicao))
+            {
+                <li>
+                    @Html.ActionLink("Olá " + User.Identity.GetUserName() + " - " + Perfis.Instituicao + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+            }
+            else
+            {
+                <li>
+                    @Html.ActionLink("Olá " + User.Identity.GetUserName() + " - " + Perfis.Admin + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+            }
+        }   
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+                }
+            }
+            else
+            {
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

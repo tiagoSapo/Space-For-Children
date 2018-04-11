@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Pedidos>
+
+@{
+    ViewBag.Title = "PAIS - Pedidos";
+}
+
+<h2>@ViewBag.Title</h2>
+<img src="~/Content/Imagens/mail.jpg" width="450" height="300" class="img-responsive"/>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Fazer um novo pedido", "FazerPedido")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PaiId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgPai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MsgInstituicao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaiId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstituicaoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MsgPai)
+        </td>
+        @{
+            if (item.MsgInstituicao == "")
+            {
+                <td>
+                    <img src="~/Content/Imagens/enviei.png" width="100" height="40"/>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.MsgInstituicao)
+                    <img src="~/Content/Imagens/recebi.png" width="50" height="40"/>
+                </td>
+            }
+        }
+
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Voltar a PAIS", "Index")

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Instituicao>
+
+<div id="actualizar">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.Label("Número de professores")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax)
+            </th>
+            <th>
+                @Html.Label("Tipo de Instituição")
+            </th>
+            <th>
+                @Html.Label("Alunos inscritos")
+            </th>
+            <th>
+                @Html.Label("Número de Serviços")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mensalidade)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroProfessores)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoInstituicao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Criancas.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ensinos.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensalidade)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

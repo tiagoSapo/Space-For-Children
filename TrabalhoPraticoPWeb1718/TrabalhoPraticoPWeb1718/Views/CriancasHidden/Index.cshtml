@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TrabalhoPraticoPWeb1718.Models.ModelosBD.Crianca>
+
+@{
+    ViewBag.Title = "Crianças";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Criar nova criança", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avaliacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataContrato)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avaliacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataContrato)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CriancaId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.CriancaId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.CriancaId })
+        </td>
+    </tr>
+}
+
+</table>
